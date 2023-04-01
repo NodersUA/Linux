@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install ufw -y
+apt-get install -y ufw
 
 ufw allow 22
 ufw allow 80
@@ -15,5 +15,5 @@ ufw deny out from any to 100.64.0.0/10
 ufw deny out from any to 198.18.0.0/15
 ufw deny out from any to 169.254.0.0/16
 
-apt install fail2ban -y
+apt-get install -y fail2ban
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
