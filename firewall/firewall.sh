@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install -y ufw && apt-get install -y fail2ban
+sudo apt-get update && sudo apt-get install -y ufw && sudo apt-get install -y fail2ban
 
 ufw allow 22
 ufw allow 80
