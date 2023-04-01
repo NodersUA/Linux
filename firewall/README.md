@@ -4,10 +4,5 @@ bash <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/firewall/fi
 ```
 
 ```bash
-ufw enable
-```
-
-```bash
-# Check status
-ufw status
+ufw enable && ufw status
 ```
