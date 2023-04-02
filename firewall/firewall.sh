@@ -14,3 +14,6 @@ ufw deny out from any to 198.18.0.0/15
 ufw deny out from any to 169.254.0.0/16
 
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+sed -i.bak -e "s/^bantime *=.*/bantime = -1/;" /etc/fail2ban/jail.local
+sed -i.bak -e "s/^findtime *=.*/findtime = 1d/;" /etc/fail2ban/jail.local
