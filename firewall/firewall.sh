@@ -17,3 +17,5 @@ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
 sed -i.bak -e "s/^bantime *=.*/bantime = -1/;" /etc/fail2ban/jail.local
 sed -i.bak -e "s/^findtime *=.*/findtime = 1d/;" /etc/fail2ban/jail.local
+
+sudo service fail2ban restart
