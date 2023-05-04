@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#UPDATE APT
+sudo apt update && apt install bc
+
 # check scripts folder existing
 mkdir -p $HOME/scripts/
 
@@ -8,14 +11,25 @@ tee $HOME/scripts/cleaner.sh > /dev/null <<EOF
 #!/bin/bash
 while true
 do
-    date
     # remove syslog
-    rm /var/log/syslog*
+    SIZE=$(du -s /var/log | cut -f 1)
+    GB=$(echo "scale=0; $SIZE/1024/1024" | bc)
+    if [ $(echo "$GB > 10" | bc) -eq 1 ]; then
+      echo "$(date) | $GB GB - clean syslog"
+      rm /var/log/syslog*
+    fi
+
     # remove subspace log files
-    rm $HOME/.local/share/subspace-cli/logs/*
-    sleep 600
-    echo "===================================="
+    SIZE=$(du -s $HOME/.local/share/subspace-cli/logs | cut -f 1)
+    GB=$(echo "scale=0; $SIZE/1024/1024" | bc)
+    if [ $(echo "$GB > 10" | bc) -eq 1 ]; then
+      echo "$(date) | $GB GB - clean subspace_log"
+      rm /root/.local/share/subspace-cli/logs/*
+    fi
+
+    sleep 6
 done
+
 EOF
 
 chmod +x $HOME/scripts/cleaner.sh
