@@ -27,7 +27,7 @@ do
       rm /root/.local/share/subspace-cli/logs/*
     fi
 
-    sleep 6
+    sleep 600
 done
 
 EOF
