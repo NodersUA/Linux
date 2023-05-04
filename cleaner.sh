@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# check scripts folder existing
+mkdir -p $HOME/scripts/
+
 # Add cleaner.sh to scripts folder
 tee $HOME/scripts/cleaner.sh > /dev/null <<EOF
 #!/bin/bash
