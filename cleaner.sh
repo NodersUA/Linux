@@ -6,6 +6,9 @@ sudo apt update && apt install bc
 # check scripts folder existing
 mkdir -p $HOME/scripts/
 
+# restart rsyslog to clean disk space
+systemctl restart rsyslog
+
 # Add cleaner.sh to scripts folder
 tee $HOME/scripts/cleaner.sh > /dev/null <<EOF
 #!/bin/bash
@@ -17,6 +20,7 @@ do
     if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
       echo "\$(date) | \$GB GB - clean syslog"
       rm /var/log/syslog*
+      systemctl restart rsyslog
     fi
 
     # remove subspace log files
@@ -25,6 +29,7 @@ do
     if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
       echo "\$(date) | \$GB GB - clean subspace_log"
       rm /root/.local/share/subspace-cli/logs/*
+      systemctl restart subspaced
     fi
 
     sleep 600
