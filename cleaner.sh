@@ -14,21 +14,22 @@ systemctl restart rsyslog
 # Add cleaner.sh to scripts folder
 tee $HOME/scripts/cleaner.sh > /dev/null <<EOF
 #!/bin/bash
+
+automate_subspace_wipe() {
+    echo "y"
+    sleep 1
+    echo "n"
+    sleep 1
+    echo "y"
+    sleep 1
+    echo "n"
+}
+
+automate_subspace_wipe | subspace wipe
+systemctl restart subspaced
+    
 while true
 do
-    automate_subspace_wipe() {
-        echo "y"
-        sleep 1
-        echo "n"
-        sleep 1
-        echo "y"
-        sleep 1
-        echo "n"
-    }
-    
-    automate_subspace_wipe | subspace wipe
-    systemctl restart subspaced
-
     # remove syslog
     SIZE=\$(du -s /var/log | cut -f 1)
     GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
