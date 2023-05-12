@@ -31,6 +31,21 @@ do
     if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
       echo "\$(date) | \$GB GB - clean subspace_log"
       rm /root/.local/share/subspace-cli/logs/*
+      
+      # Automation of the subspace wipe command
+        expect -c '
+            spawn subspace wipe
+            expect "Do you want to wipe farmer (delete plot)? [y/n]:"
+            send "y\r"
+            expect "Do you want to wipe node? [y/n]:"
+            send "n\r"
+            expect "Do you want to wipe summary? [y/n]:"
+            send "y\r"
+            expect "Do you want to wipe config? [y/n]:"
+            send "n\r"
+            expect eof
+        '
+      
       systemctl restart subspaced
     fi
 
