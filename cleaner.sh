@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# source <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/cleaner.sh)
+
 #UPDATE APT
 sudo apt update && apt install bc
 
