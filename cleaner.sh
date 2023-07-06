@@ -3,7 +3,7 @@
 # source <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/cleaner.sh)
 
 #UPDATE APT
-sudo apt update && apt install bc
+sudo apt update && apt install bc -y
 
 # check scripts folder existing
 mkdir -p ~/scripts/
