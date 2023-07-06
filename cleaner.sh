@@ -35,21 +35,6 @@ do
       systemctl restart subspaced
     fi
 
-    # clean /boot
-    KERNELS=\$(dpkg --list | grep linux-image | awk '{ print $2 }')
-    KEEP_KERNELS=2
-    
-    COUNT=0
-    for KERNEL in $KERNELS; do
-      if [ \$COUNT -ge \$KEEP_KERNELS ]; then
-        echo "Removing kernel: \$KERNEL"
-        sudo apt-get remove -y \$KERNEL
-      else
-        echo "Keeping kernel: \$KERNEL"
-      fi
-      COUNT=\$((COUNT+1))
-    done
-
     sleep 600
 done
 
