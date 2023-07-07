@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Fail2ban
+bash <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/firewall/firewall.sh)
+
+# Disabling password authentication on the server
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sudo systemctl restart ssh
+
+# Cleaner
+source <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/cleaner.sh)
+
+# Montoring
+source <(curl -s https://raw.githubusercontent.com/NodersUA/monitoring/main/setup.sh)
