@@ -27,12 +27,14 @@ do
     fi
 
     # remove subspace log files
-    SIZE=\$(du -s \$HOME/.local/share/subspace-cli/logs | cut -f 1)
-    GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
-    if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
-      echo "\$(date) | \$GB GB - clean subspace_log"
-      rm /root/.local/share/subspace-cli/logs/*    
-      systemctl restart subspaced
+    if [ -d "~/.local/share/subspace-cli/logs" ]; then
+      SIZE=\$(du -s ~/.local/share/subspace-cli/logs | cut -f 1)
+      GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
+      if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
+        echo "\$(date) | \$GB GB - clean subspace_log"
+        rm /root/.local/share/subspace-cli/logs/*    
+        systemctl restart subspaced
+      fi
     fi
 
     sleep 600
