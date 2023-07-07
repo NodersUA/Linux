@@ -1,4 +1,5 @@
 #!/bin/bash
+# source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/start_config)
 
 # Fail2ban
 bash <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/firewall/firewall.sh)
