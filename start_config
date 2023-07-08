@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # *** ! MANUALLY Add SSH keys to servers with script ***
+# Setup SSH Config
+source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_ssh_config.sh)
+# Monitoring
+source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_monitoring.sh)
 
 # source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/start_config)
 
@@ -11,13 +15,10 @@ bash <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/firewall/fi
 sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 sudo systemctl restart ssh
 
-# Setup SSH Config
-source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_ssh_config.sh)
-
-# Montoring
-source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_monitoring.sh)
-
 # Cleaner
 source <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/cleaner.sh)
+
+
+
 
 
