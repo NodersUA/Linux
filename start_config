@@ -1,12 +1,11 @@
 #!/bin/bash
+# source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/start_config)
 
 # *** ! MANUALLY Add SSH keys to servers with script ***
 # Setup SSH Config
 source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_ssh_config.sh)
 # Monitoring
 source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_monitoring.sh)
-
-# source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/start_config)
 
 # Fail2ban
 bash <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/firewall/firewall.sh)
