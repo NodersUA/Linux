@@ -25,8 +25,7 @@ fi
 
 # Clone repository
 echo -e "\e[1m\e[32m ***** Clone repository ***** \e[0m" && sleep 1
-cd $HOME && git clone git@github.com:NodersUA/monitoring.git # git clone https://github.com/NodersUA/monitoring
-# cd ~/monitoring && git remote set-url origin git@github.com:NodersUA/monitoring.git   # TEMP ~
+cd $HOME && git clone git@github.com:NodersUA/monitoring.git
 cd ~/monitoring && git fetch && git reset --hard && git pull
 cd ~/monitoring && pip install -r requirements.txt
 
