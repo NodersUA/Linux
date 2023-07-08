@@ -15,7 +15,7 @@ sudo systemctl restart ssh
 source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_ssh_config.sh)
 
 # Montoring
-# source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_monitoring.sh)
+source <(curl -s https://raw.githubusercontent.com/NodersUA/Tools/main/setup_monitoring.sh)
 
 # Cleaner
 source <(curl -s https://raw.githubusercontent.com/NodersUA/Linux/main/cleaner.sh)
