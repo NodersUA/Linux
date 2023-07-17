@@ -1,0 +1,13 @@
+#!/bin/bash
+
+automate_subspace_wipe() {
+    echo "y"
+    sleep 1
+    echo "n"
+    sleep 1
+    echo "y"
+    sleep 1
+    echo "n"
+}
+automate_subspace_wipe | subspace wipe
+systemctl restart subspaced
