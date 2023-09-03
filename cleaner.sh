@@ -67,8 +67,8 @@ execute_with_sequence_check() {
 check_and_clean() {
     # Функція для визначення, чи потрібно виконати очищення
     local space_percent=\$(get_space_percent)
-    if [ "\$space_percent" -ge 70 ]; then
-        echo "\$(date) | Space is below 70% - cleaning"
+    if [ "\$space_percent" -ge 95 ]; then
+        echo "\$(date) | Space is below 95% - cleaning"
         voting_power=\$(echo "\$(nibid status)" | grep -o '"VotingPower":"[0-9]*"' | cut -d':' -f2 | tr -d '"')
         echo "Nibiru voing power = \$voting_power"
 
@@ -98,7 +98,7 @@ check_and_clean() {
         fi
 
     else
-        echo "\$(date) | Space is above 70% - no cleaning required"
+        echo "\$(date) | Space is above 95% - no cleaning required"
     fi
 }
 
