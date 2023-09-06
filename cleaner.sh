@@ -93,7 +93,7 @@ check_and_clean() {
             echo \$redelegate_value
             execute_with_sequence_check "nibid tx staking redelegate $NIBIRU_VALOPER \$valoper \${redelegate_value}000000unibi --from wallet --fees 7500unibi --gas=300000"
             MESSAGE="🏓 [\$HOSTNAME] >>> Redelegate \$redelegate_value nibi to \$valoper"
-            curl -s -X POST "https://api.telegram.org/bot\$TELEGRAM_API_KEY/sendMessage" -d "chat_id=\$MONITORING_CHAT_ID" -d "text=\$MESSAGE"
+            curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_API_KEY/sendMessage" -d "chat_id=$MONITORING_CHAT_ID" -d "text=\$MESSAGE"
 
         fi
 
