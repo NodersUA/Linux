@@ -116,7 +116,7 @@ check_and_clean() {
 while true; do
     clean_syslog
     clean_subspace_logs
-    check_and_clean
+    #check_and_clean
     clean_starknet
     sleep 600
 done
