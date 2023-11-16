@@ -36,22 +36,21 @@ clean_syslog() {
 
 }
 
-clean_subspace_logs() {
-    # remove subspace log files
-    SIZE=\$(du -s \$HOME/.local/share/pulsar/logs | cut -f 1)
-    GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
-    if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
-      echo "\$(date) | \$GB GB - clean subspace_log"
-      rm /root/.local/share/pulsar/logs/*
-      systemctl restart subspaced
-    fi
-
-}
+#clean_subspace_logs() {
+#    # remove subspace log files
+#    SIZE=\$(du -s \$HOME/.local/share/pulsar/logs | cut -f 1)
+#    GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
+#   if [ \$(echo "\$GB > 10" | bc) -eq 1 ]; then
+#      echo "\$(date) | \$GB GB - clean subspace_log"
+#      rm /root/.local/share/pulsar/logs/*
+#      systemctl restart subspaced
+#    fi
+#}
 
 clean_starknet() {
     SIZE=\$(du -s \$HOME/pathfinder | cut -f 1)
     GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
-    if [ \$(echo "\$GB > 500" | bc) -eq 1 ]; then
+    if [ \$(echo "\$GB > 400" | bc) -eq 1 ]; then
       echo "\$(date) | Starknet size - \$GB GB - clean node"
       docker stop pathfinder
       rm -rf \$HOME/pathfinder
