@@ -39,7 +39,7 @@ clean_syslog() {
 clean_starknet() {
     SIZE=\$(du -s \$HOME/pathfinder | cut -f 1)
     GB=\$(echo "scale=0; \$SIZE/1024/1024" | bc)
-    if [ \$(echo "\$GB > 400" | bc) -eq 1 ]; then
+    if [ \$(echo "\$GB > 200" | bc) -eq 1 ]; then
       echo "\$(date) | Starknet size - \$GB GB - clean node"
       docker stop pathfinder
       rm -rf \$HOME/pathfinder
